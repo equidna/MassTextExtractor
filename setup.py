@@ -10,5 +10,5 @@ setup(
     url = 'https://github.com/equidna/MassTextExtractor',
     download_url = 'https://github.com/equidna/MassTextExtractor/tarball/0.1',
     keywords = ['extractor', 'parser', 'text', 'batch'],
-    classifiers = [],
+    py_modules = ['MassTextExtractor']
 )
