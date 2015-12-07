@@ -3,7 +3,7 @@ Library used for extracting text. It's composed by 2 classes:
 * [FieldParser](#FieldParser)
 * [TextsParser](#TextsParser)
 
-## FieldParser
+## <a name="FieldParser"></a>FieldParser
 Class used for extracting parts from a single text.
 
 ### Required fields:
