@@ -125,19 +125,19 @@ new_field.return_flagged_lines()
 
 ### Private attributes:
 
-#### <a name="text"></a>text
+#### text
 String where the original text is stored.
 
-#### <a name="flags"></a>flags
+#### flags
 List of flagging elements that can be compared against text lines for
 filtering purposes.
 
-#### <a name="lines"></a>lines
+#### lines
 List of tuples with all the lines from the original text and respective
 line positions. The first element of the tuple is the text line. The
 second element of the tuple is the line's position from the text.
 
-#### <a name="flagged_lines"></a>flagged_lines
+#### flagged_lines
 List of tuples of lines, from the text, that where flagged by the
 object's flagging methods and respective positions in the text. The
 first element of the tuple is the flagged line. The second element of
@@ -153,7 +153,7 @@ the tuple is the flagged line's position from the text.
 * [match_flagged_lines](#match_flagged_lines)
 * [return_flagged_lines](#return_flagged_lines)
 
-#### switch_field_lines
+#### <a name="switch_field_lines"></a>switch_field_lines
 Method for switching the flagged lines by comparing the list of tuples
 'switchers' against the list of flagged lines 'flagged_lines' and edit
 them. I has an optional argument to indicate if the switchers are regex
@@ -174,7 +174,7 @@ new_field.return_flagged_lines()
 >> [('Edited line 1.', 0)]
 ```
 
-#### break_field_lines
+#### <a name="break_field_lines"></a>break_field_lines
 Method for breaking the flagged lines by comparing the list of tuples
 'breakers' against the list of flagged lines 'flagged_lines' and edit
 them. I has an optional argument to indicate if the switchers are regex
@@ -195,7 +195,7 @@ new_field.return_flagged_lines()
 >> [('Chunk2.', 0), ('Line 2.', 1)]
 ```
 
-#### drop_field_lines
+#### <a name="drop_field_lines"></a>drop_field_lines
 Method for dropping the flagged lines by comparing the list of tuples
 'droppers' against the list of flagged lines 'flagged_lines' and edit
 them. I has an optional argument to indicate if the switchers are regex
@@ -216,7 +216,7 @@ new_field.return_flagged_lines()
 >> [('Line 1.', 0)]
 ```
 
-#### shift_field_lines
+#### <a name="shift_field_lines"></a>shift_field_lines
 Method for shifting the flagged lines by comparing the list of tuples
 'shifters' against the list of flagged lines 'flagged_lines' and edit
 them. I has an optional argument to indicate if the switchers are regex
@@ -237,7 +237,7 @@ new_field.return_flagged_lines()
 >> [('Line 3.', 2)]
 ```
 
-#### get_sample_lines
+#### <a name="get_sample_lines"></a>get_sample_lines
 Returns a sample of the original text. It takes 2 optional arguments:
 the 'start' element referring to the starting line of the sample and
 the 'end' referring to the ending line of the sample (excluding). The
@@ -259,7 +259,7 @@ new_field.get_sample_lines(start, end)
 >> [' Line 2.', ' Line 3.']
 ```
 
-#### get_unflagged_lines
+#### <a name="get_unflagged_lines"></a>get_unflagged_lines
 Returns original text without flagged lines.
 
 ##### Example:
@@ -275,7 +275,7 @@ new_field.get_unflagged_lines()
 >> [(' Line 2.', 1), (' Line 3.', 2), (' Line 4.', 3)]
 ```
 
-#### match_flagged_lines
+#### <a name="match_flagged_lines"></a>match_flagged_lines
 Matches flagged lines against a string element and returns a list of 2
 element tuples composed by the field line and corresponding index of
 matched/unmatched flagged lines. It takes one argument ('matcher'), and
@@ -305,7 +305,7 @@ new_field.match_flagged_lines(matcher, match, regex)
 >> [('Line a.', 2), ('Line b.', 3)]
 ```
 
-#### return_flagged_lines
+#### <a name="return_flagged_lines"></a>return_flagged_lines
 Returns the resulting extracted flagged lines at that point.
 
 #### Example:
@@ -330,14 +330,14 @@ It parses the original text and returns a list of lines from the text.
 It compares the list of lines against the flags and finds the flagged
 field lines. Returns 'False' if nothing is found.
 
-## TextsParser
+## <a name="TextsParser"></a>TextsParser
 Subclass of FieldParser for extracting parts from each text from a
 group of texts.
 
 ### Required fields:
 * [file_dirs](#file_dirs)
 * [flags](#TextsParserflags)
-* [TextsParserflags_regex](#flags_regex)
+* [flags_regex](#TextsParserflags_regex)
 
 #### <a name="file_dirs"></a>file_dirs
 List of file directories to be parsed by the class.
@@ -701,5 +701,5 @@ new_field.return_texts_field_lines()
 #### get_text
 Gets texts from files.
 
-#### flag_texts_field_lines
+#### return_texts_field_lines
 Gets list of lines from each text.
