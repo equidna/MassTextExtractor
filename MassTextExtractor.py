@@ -21,7 +21,9 @@ class FieldParser(object):
         # list of all the lines from the text
         self._lines = self._get_lines()
         # the detected field lines
-        self._flagged_lines = self._flag_field_lines(flags_regex)
+        self._flagged_lines = []
+        # initialize _flagged_lines
+        self._flag_field_lines(flags_regex)
 
         # list of tuples
         # first element of the tuple is the expression to be changed
@@ -47,7 +49,8 @@ class FieldParser(object):
         for index, unindexed_line in enumerate(unindexed_lines):
             indexed_lines.append((unindexed_line, index))
         # return indexed lines
-        return indexed_lines
+        self._lines = indexed_lines
+        return self._lines
 
     # gets the field lines, returns "False" if not found
     def _flag_field_lines(self, regex = False):
@@ -71,9 +74,10 @@ class FieldParser(object):
         # if field lines list isn't empty return it.
         # return "False" otherwise
         if flagged_lines != []:
-            return flagged_lines
+            self._flagged_lines = flagged_lines
         else:
-            return False
+            self._flagged_lines = False
+        return self._flagged_lines
 
     # strip the lines where the fields where detected
     def switch_field_lines(self, regex = False):
@@ -239,7 +243,7 @@ class TextsParser(FieldParser):
         # list of files directories
         self._file_dirs = file_dirs
         # dict with lists of field lines from each text
-        # name of file has key
+        # name of file as key
         self._texts_field_lines = self._flag_texts_field_lines()
 
     # get text from file
@@ -262,8 +266,6 @@ class TextsParser(FieldParser):
             #print file_dir
             self._get_text(file_dir)
             self._get_lines()
-            # reset field lines
-            self._flagged_lines = []
             text_field_lines = self._flag_field_lines()
             texts_field_lines[file_dir] = text_field_lines
         return texts_field_lines
@@ -455,7 +457,6 @@ class TextsParser(FieldParser):
     # list of tuples with 2 elements: fields and indexes
     # ex:
     # {text_1: [(field_1, index_1), (field_2, index_2)], text_2: ...}
-
     def match_texts_flagged_lines(self, matcher, match = True, regex = False):
         texts_matched_fields = {}
         for file_dir, text_field_lines in self._texts_field_lines.iteritems():
